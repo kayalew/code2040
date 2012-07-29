@@ -23,8 +23,8 @@ class CandidateService {
 		c.race = race
 		c.homeCountry = homeCountry
 		c.fellowYear = fellowYear
-		c.questions.addAll(questions)
-		c.recruitmentInfo.addAll(recruitmentInfo)
+		//c.questions.addAll(questions)
+		//c.recruitmentInfo.addAll(recruitmentInfo)
 		c.homeState = homeState
 		c.save()
 		return c

@@ -7,6 +7,7 @@ import org.codehaus.groovy.grails.web.json.JSONObject
 class CandidateController {
 	
 	def candidateService
+	def messageSource
 
     def index() { 
 		render "Hello! This is the Candidate Controller.. We're still working on it!\n" +
@@ -17,40 +18,52 @@ class CandidateController {
 	}
 	
 	def create() {
-		String formString = params.jsonForm
-		if (formString == null) {
-			render "Not enough information to create an user"
-			return
+		
+		if (request.method == 'GET') {
+			def htmlContent = new File('grails-app/views/login.html').text
+			render text: htmlContent, contentType:"text/html", encoding:"UTF-8"
+		} else if (request.method == 'POST') {
+		
+			String name = params.name
+			String school = params.school
+			String graduationDate = params.gradDate
+			String email = params.email
+			String password = params.password // This NEEDS TO BE HASHED
+			String phoneNumber = params.phone
+			char gender = params.gender != null ? params.gender.charAt(0) : null
+			String race = params.race
+			String homeCountry = params.country
+			int fellowYear = Calendar.getInstance().get(Calendar.YEAR); // Get Always Current Year - ? Or let user decide ?
+			
+			List<Question> questions
+			// TBD
+			
+			List<RecruitmentInfo> recruitmentInfo
+			// TBD
+			
+			// Optional
+			String homeState = params.homeState
+			
+			Candidate c = candidateService.createCandidate(
+				name, school, graduationDate, email, password, phoneNumber,
+				gender, race, homeCountry, fellowYear, questions, recruitmentInfo,
+				homeState
+				)
+			if (c.hasErrors()) {
+				def locale = Locale.getDefault()
+				for (fieldErrors in c.errors) {
+				   for (error in fieldErrors.allErrors) {
+				      String message = messageSource.getMessage(error, locale)
+					  render message
+					  return
+				   }
+				}
+			} else {
+				render "User Created sucessfully! ID: " + c.id
+			}
+		} else {
+			render "Invalid Request"
 		}
-		
-		JSONObject jsonForm = JSON.parse(formString)
-		
-		String name = jsonForm.getString('name')
-		String school = jsonForm.getString('school')
-		String graduationDate = jsonForm.getString('gradDate')
-		String email = jsonForm.getString('email')
-		String password = jsonForm.getString('password') // This NEEDS TO BE HASHED
-		String phoneNumber = jsonForm.getString('phone')
-		char gender = jsonForm.getString('gender') != null ? jsonForm.getString('gender').charAt(0) : null
-		String race = jsonForm.getString('race')
-		String homeCountry = jsonForm.getString('country')
-		int fellowYear = Calendar.getInstance().get(Calendar.YEAR); // Get Always Current Year - ? Or let user decide ?
-		
-		List<Question> questions
-		// TBD
-		
-		List<RecruitmentInfo> recruitmentInfo
-		// TBD
-		
-		// Optional
-		String homeState = jsonForm.getString('homeState')
-		
-		Candidate c = candidateService.createCandidate(
-			name, school, graduationDate, email, password, phoneNumber,
-			gender, race, homeCountry, fellowYear, questions, recruitmentInfo,
-			homeState
-			)
-		
 	}
 	
 	def update() {
