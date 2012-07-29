@@ -32,53 +32,53 @@
 				<form class="reg submission" action="candidate/create" method="post">
 					<div class="elem_containter">
 						<label for="reg_email">Email:</label><br/>
-						<input type="text" id="reg_email"/>
+						<input type="text" id="reg_email" name="email"/>
 					</div>
 					<div class="elem_containter">
 						<label for="reg_password">Password:</label></br>
-						<input type="password" id="reg_password"/>
+						<input type="password" id="reg_password" name="password"/>
 					</div>
 					<div class="elem_containter">
 						<label for="reg_retype">Retype password:</label></br>
-						<input type="password" id="reg_retype"/>
+						<input type="password" id="reg_retype" name="retry"/>
 					</div>
 					<div class="elem_containter">			
 						<label for="reg_name">Name:</label><br/>
-						<input type="text" id="reg_name"/>
+						<input type="text" id="reg_name" name="name"/>
 					</div>
 					<div class="elem_containter">
 						<label for="reg_phone">Phone:</label><br/>
-						<input type="text" id="reg_phone"/>
+						<input type="text" id="reg_phone" name="phone"/>
 					</div>
 					<div class="elem_containter">
-						<label for="reg_school">College:</label><br/>
-						<input type="text" id="reg_school"/>
+						<label for="reg_school">School:</label><br/>
+						<input type="text" id="reg_school" name="school"/>
 					</div>
 					<div class="elem_containter">
 						<label for="reg_grad_yr">Expected graduation year:</label><br/>
-						<input type="text" id="reg_grad_yr" />
+						<input type="text" id="reg_grad_yr" name="gradDate"/>
 					</div>
 					<div class="elem_containter">
 						<label for="reg_gender"/>Gender:</label><br/>
-						<select id="reg_gender">
-							<option>Male</option>
-							<option>Female</option>
+						<select id="reg_gender" name="gender">
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
 						</select>
 					</div>
 					<div class="elem_containter">
 						<label for="reg_race"/>Race:</label><br/>
-						<select id="reg_race" multiple="multiple">
-							<option>Black</option>
-							<option>Latino</option>
+						<select id="reg_race" multiple="multiple" name="race">
+							<option value="Black">Black</option>
+							<option value="Latino">Latino</option>
 						</select>
 					</div>
 					<div class="elem_containter">
 						<label for="reg_state">Home state:</label><br/>
-						<input type="text" id="reg_state"/>
+						<input type="text" id="reg_state" name="homeState"/>
 					</div>
 					<div class="elem_containter">
 						<label for="reg_country">Home country:</label><br/>
-						<input type="text" id="reg_country"/>
+						<input type="text" id="reg_country" name="country"/>
 					</div>
 					<div class="elem_containter">
 						<button>Already registered?</button>
