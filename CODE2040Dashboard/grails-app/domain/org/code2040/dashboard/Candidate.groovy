@@ -8,7 +8,7 @@ class Candidate {
 	String email
 	String password // This will be hashed
 	String phoneNumber
-	ProcessStep currentStep = ProcessStep.FIRST_STEP
+	ApplicationStep currentStep = ApplicationStep.FIRST_STEP
 	// int status ?!?!?
 	char gender
 	String race
@@ -22,15 +22,11 @@ class Candidate {
 	int timeCreated = System.currentTimeMillis() // When Created
 	int timeModified = System.currentTimeMillis() // When Created
 	int timeRemoved = 0
-	int lastLogin
+	int lastLogin = 0
 	
 	// Optional
 	String homeState
 
 	    static constraints = {
     }
-}
-
-public enum ProcessStep {
-	FIRST_STEP(1), SECOND_STEP(2), THIRD_STEP(3), FOURTH_STEP(4)
 }
