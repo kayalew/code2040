@@ -26,13 +26,15 @@ class LoginController {
 		String goodHash = new String()
 		if (!staff){
 			//goodHash =  mysqldb.query("SELECT hash FROM students WHERE email="+lookupEmail)
-			//loginService.checkEmptyUser(goodHash, staff)
-			//loginService.processPassword(possiblePassword, goodHash, staff)
+			goodHash = (String) Student.find("select student.hash from Student student")
+			loginService.checkEmptyUser(goodHash, staff)
+			loginService.processPassword(possiblePassword, goodHash, staff)
 		}
 		else{
-			//goodHash =  mysqldb.query("SELECT hash FROM staff WHERE email="+lookupEmail)
-			//loginService.checkEmptyUser(goodHash, staff)
-			//loginService.processPassword(possiblePassword, goodHash, staff)
+			//goodHash = (String)this.jdbcTemplate.queryForObject("SELECT hash FROM staff WHERE email="+lookupEmail)
+			goodHash = (String) Staff.find("select staff.hash from Staff staff")
+			loginService.checkEmptyUser(goodHash, staff)
+			loginService.processPassword(possiblePassword, goodHash, staff)
 		}
 	}
 }
