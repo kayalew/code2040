@@ -6,7 +6,7 @@ import org.code2040.dashboard.Question
 import org.code2040.dashboard.RecruitmentInfo
 
 class CandidateService {
-
+	def securityService
     def createCandidate(String name, String school, String graduationDate, String email,
 		
 		String password, String phoneNumber, char gender, String race, String homeCountry,
@@ -17,7 +17,7 @@ class CandidateService {
 		c.school = school
 		c.graduationDate = graduationDate
 		c.email = email
-		c.password = password // HASH IT
+		c.password = securityService.createHash(password)
 		c.phoneNumber = phoneNumber
 		c.gender = gender
 		c.race = race

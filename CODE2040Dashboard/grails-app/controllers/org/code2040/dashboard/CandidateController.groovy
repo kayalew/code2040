@@ -28,7 +28,7 @@ class CandidateController {
 			String school = params.school
 			String graduationDate = params.gradDate
 			String email = params.email
-			String password = params.password // This NEEDS TO BE HASHED
+			String password = params.password
 			String phoneNumber = params.phone
 			char gender = params.gender != null ? params.gender.charAt(0) : null
 			String race = params.race
